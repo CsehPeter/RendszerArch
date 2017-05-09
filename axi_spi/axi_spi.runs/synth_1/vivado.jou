@@ -1,0 +1,12 @@
+#-----------------------------------------------------------
+# Vivado v2017.1 (64-bit)
+# SW Build 1846317 on Fri Apr 14 18:55:03 MDT 2017
+# IP Build 1846188 on Fri Apr 14 20:52:08 MDT 2017
+# Start of session at: Tue May  9 13:34:10 2017
+# Process ID: 5216
+# Current directory: D:/BME/MSC1/RA/HF/axi_spi/axi_spi.runs/synth_1
+# Command line: vivado.exe -log axi_spi_top.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source axi_spi_top.tcl
+# Log file: D:/BME/MSC1/RA/HF/axi_spi/axi_spi.runs/synth_1/axi_spi_top.vds
+# Journal file: D:/BME/MSC1/RA/HF/axi_spi/axi_spi.runs/synth_1\vivado.jou
+#-----------------------------------------------------------
+source axi_spi_top.tcl -notrace

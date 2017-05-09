@@ -145,7 +145,7 @@ component axi
 );
 end component;
 
-signal s_clk : std_logic;
+--signal s_clk : std_logic;
 signal s_dev_sel : std_logic_vector((DEVICES - 1) downto 0);
 signal s_send_data : std_logic_vector(23 downto 0);
 signal s_rec_data : std_logic_vector(23 downto 0);
@@ -157,7 +157,7 @@ begin
 
 inst_spi_top : spi_top
 port map(
-		clk => s_clk,
+		clk => CLK,
 		per_rst => RST, 	--TODO
 		sys_rst =>  RST, 	--TODO	
 
@@ -178,7 +178,7 @@ port map(
 inst_axi : axi
 port map(
 		-- Clock and Reset--
-		S_AXI_ACLK => s_clk,
+		S_AXI_ACLK => CLK,
 		S_AXI_ARESETN => RST,
 
 		-- Write Address Channel--
