@@ -86,6 +86,10 @@ begin
 
 ----WRITE----
 
+--Nem tudjuk, hogy sikeres-e az átvitel
+S_AXI_BRESP <= "00";
+S_AXI_BVALID <= '0';
+
 --WRITE ADDR kezelo process--
 proc_write_addr : process (S_AXI_ACLK)
 begin
@@ -157,6 +161,9 @@ w_en <= w_addr_valid and w_data_valid;
 
 
 ----READ----
+
+--Nem tudjuk, hogy sikeres-e az átvitel
+S_AXI_RRESP <= "00";
 
 --READ ADDR kezelo process--
 proc_read_addr : process(S_AXI_ACLK)

@@ -135,6 +135,24 @@ BEGIN
 		CLK <= '1';
 		wait for CLK_period/2;
    end process;
+   
+   proc_miso : process(SPI_SCK)
+   begin
+        if(rising_edge(SPI_SCK)) then
+            SPI_MISO <= not(SPI_MISO);
+        end if;
+   end process proc_miso;
+   
+   proc_axi_r_ready : process(CLK)
+   begin
+    if(rising_edge(CLK)) then
+        if(S_AXI_RVALID = '1') then
+            S_AXI_RREADY <= '1';
+        else
+            S_AXI_RREADY <= '0';
+        end if;
+    end if;
+   end process proc_axi_r_ready;
  
 
    -- Stimulus process
