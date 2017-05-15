@@ -165,7 +165,7 @@ BEGIN
 
       -- insert stimulus here 
       -- WRITE TRANSACTION
-     S_AXI_AWADDR <= X"30000001";
+     S_AXI_AWADDR <= X"FA000001";
      S_AXI_AWVALID <= '1';
      S_AXI_WDATA <= X"aabb02cc"; --WRITE opcode: 0000 0010
      S_AXI_WVALID <= '1';
@@ -177,7 +177,7 @@ BEGIN
      wait for 2*CLK_period;
      
      -- READ TRANSACTION
-     S_AXI_ARADDR <= X"03400000"; --READ opcode: 0000 0011
+     S_AXI_ARADDR <= X"AA400300"; --READ opcode: 0000 0011
      S_AXI_ARVALID <= '1';
      wait for 2*CLK_period;
      S_AXI_ARADDR <= X"00000000"; 
@@ -201,6 +201,15 @@ BEGIN
      S_AXI_ARADDR <= X"00000000"; 
      S_AXI_ARVALID <= '0';
 
+     wait for 2*CLK_period;
+     
+     wait for 200*CLK_period;
+    -- READ TRANSACTION
+     S_AXI_ARADDR <= X"FA400300"; --READ opcode: 0000 0011
+     S_AXI_ARVALID <= '1';
+     wait for 2*CLK_period;
+     S_AXI_ARADDR <= X"00000000"; 
+     S_AXI_ARVALID <= '0';
      wait for 2*CLK_period;
     
 

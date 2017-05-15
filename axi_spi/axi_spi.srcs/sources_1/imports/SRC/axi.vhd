@@ -13,7 +13,8 @@ use IEEE.STD_LOGIC_1164.ALL;
 entity axi is
   generic
   (
-    DEVICES : integer := 1
+    DEVICES : integer := 1;
+    PER_ADDR : std_logic_vector(7 downto 0) := X"FA"
   );
   port
   (
@@ -98,7 +99,7 @@ begin
             --w_addr <= (others => '0'); --Elég a vezérlo jelet resetelni
             w_addr_valid <= '0';
         else
-            if(S_AXI_AWVALID = '1') then --Ha van érvényes cím, akkor elveszem a címet és jelzem, hogy elvettem
+            if(S_AXI_AWVALID = '1' and S_AXI_AWADDR(31 downto 24) = PER_ADDR) then --Ha van érvényes cím, akkor elveszem a címet és jelzem, hogy elvettem
                 --Beolvasom a címet, van érvényes cím
                 w_addr <= S_AXI_AWADDR;
                 w_addr_valid <= '1';
@@ -173,7 +174,7 @@ begin
             --r_addr <= (others => '0'); --Elég a vezérlo jelet resetelni
             r_addr_valid <= '0';
         else
-            if(S_AXI_ARVALID = '1') then --Ha van érvényes cím, akkor elveszem a címet és jelzem, hogy elvettem
+            if(S_AXI_ARVALID = '1' and S_AXI_ARADDR(31 downto 24) = PER_ADDR) then --Ha van érvényes cím, akkor elveszem a címet és jelzem, hogy elvettem
                 --Beolvasom a címet, és van érvényes cím
                 r_addr <= S_AXI_ARADDR;
                 r_addr_valid <= '1';
